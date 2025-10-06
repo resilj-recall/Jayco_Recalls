@@ -1,0 +1,125 @@
+/* Royal blue + white theme with an abstract JPEG background */
+:root{
+  --royal:#1a3dbb;
+  --royal-dark:#0f2b8a;
+  --card:rgba(255,255,255,0.08);
+  --muted:#f0f4ffcc;
+  --text:#ffffff;
+  --accent:#ffffff;
+  --accent-2:#22c55e;
+  --border:rgba(255,255,255,0.18);
+  --chip:rgba(255,255,255,0.12);
+  --danger:#ff6b6b;
+}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  min-height:100dvh;
+  color:var(--text);
+  background:
+    linear-gradient(180deg, rgba(26,61,187,0.9), rgba(15,43,138,0.92)),
+    url("https://upload.wikimedia.org/wikipedia/commons/9/94/Abstract_blue_background7.jpg")
+      center/cover no-repeat fixed;
+}
+.container{max-width:1000px;margin-inline:auto;padding:24px}
+header h1{margin:0 0 6px;font-size:28px}
+.sub{margin:0;color:var(--muted)}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  backdrop-filter: blur(8px) saturate(120%);
+  box-shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+@media (max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field span{font-size:12px;color:var(--muted);letter-spacing:.4px}
+
+input{
+  width:100%;padding:12px 14px;border-radius:10px;
+  background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--text);
+  outline:none;transition:border .15s, box-shadow .15s, background .15s;
+}
+input::placeholder{color:#ffffffb3}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,255,255,.25);background:rgba(255,255,255,0.14)}
+
+.actions{display:flex;gap:10px;margin-top:12px}
+.btn{
+  padding:10px 14px;border-radius:10px;border:1px solid var(--border);
+  background:rgba(255,255,255,0.14);color:var(--text);cursor:pointer;transition:.15s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{
+  background:linear-gradient(135deg, #ffffff, #dbe3ff);
+  color:#0b1f66;border:none
+}
+.btn.ghost{background:transparent;color:#fff}
+
+.helper{color:var(--muted);margin:8px 2px 0}
+
+.results{margin-top:16px}
+.results-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--chip);border:1px solid var(--border);
+  padding:6px 10px;border-radius:999px;color:#eef2ff;font-size:12px
+}
+.results-list{display:grid;grid-template-columns:1fr;gap:10px}
+
+/* Result cards */
+.result{
+  display:grid;gap:8px;padding:14px;border:1px solid var(--border);
+  border-radius:12px;background:rgba(0,0,0,0.25)
+}
+.result .row{display:flex;flex-wrap:wrap;gap:10px}
+.kv{display:flex;gap:6px;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);border-radius:999px;padding:6px 10px}
+.k{color:#e0e7ff;font-size:12px}
+.v{font-weight:700}
+.docs{display:flex;flex-wrap:wrap;gap:8px}
+a.doc{
+  text-decoration:none;color:#0b1f66;background:#ffffff;border:1px solid #e8ecff;border-radius:10px;padding:8px 10px;font-size:14px
+}
+.status{font-weight:800}
+.status.open{color:var(--danger)}
+.status.closed{color:var(--accent-2)}
+
+.extras{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:12px;
+}
+@media (max-width:720px){.extras{grid-template-columns:1fr}}
+
+.hint{margin:4px 0 0;color:#dbe5ffcc;font-size:12px}
+
+.export-bar{
+  margin-top:14px;
+  display:grid;
+  gap:10px;
+  border-top:1px dashed var(--border);
+  padding-top:12px;
+}
+.export-bar.hidden{display:none}
+.email-row{display:flex;gap:8px;flex-wrap:wrap}
+.email-row input{
+  flex:1 1 280px;
+  background:rgba(255,255,255,0.18)
+}
+.export-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.muted.small{font-size:12px;color:#e5eaffcc}
+
+.foot{opacity:.9;display:flex;flex-direction:column;gap:6px}
+.credit a{color:#fff;text-decoration:underline dotted}
+
+
