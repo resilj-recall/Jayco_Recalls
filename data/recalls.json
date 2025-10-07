@@ -1,0 +1,40 @@
+
+[
+  {
+    "vin": "1HGCM82633A004352",
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2003,
+    "recallNumber": "RCL-2023-001",
+    "recallStatus": "Closed",
+    "documents": ["RCL-2023-001.pdf"]
+  },
+  {
+    "vin": "5YJ3E1EA7KF317999",
+    "make": "Tesla",
+    "model": "Model 3",
+    "year": 2019,
+    "recallNumber": "RCL-2024-115A",
+    "recallStatus": "Open",
+    "documents": ["RCL-2024-115A.pdf", "bulletin-115A-supplement.pdf"]
+  },
+  {
+    "vin": "1FTFW1E50NFB12345",
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "recallNumber": "RCL-2022-049",
+    "recallStatus": "Closed",
+    "documents": ["RCL-2022-049.pdf"]
+  },
+  {
+    "vin": "JTDKB20U793123456",
+    "make": "Toyota",
+    "model": "Prius",
+    "year": 2009,
+    "recallNumber": "RCL-2010-077",
+    "recallStatus": "Open",
+    "documents": []
+  }
+]
+
