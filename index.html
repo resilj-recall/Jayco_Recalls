@@ -1,1 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Safety Recall Search</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="description" content="Search safety recalls by VIN, Make, Model, Year or Recall Number. Fuzzy matching, CSV VIN upload, and results export/email."/>
+</head>
+<body>
+  <header class="container">
+    <h1>Safety Recall Search</h1>
+    <p class="sub">
+      Enter a <strong>VIN</strong> to see its <strong>Status</strong> and <strong>Documents</strong>.<br/>
+      If VIN is blank, we list documents for the provided <strong>Make/Model/Year</strong>.<br/>
+      New: <strong>Fuzzy matching</strong>, <strong>CSV VIN upload</strong>, and <strong>Export/Email results</strong>.
+    </p>
+  </header>
 
+  <main class="container">
+    <form id="searchForm" class="card" aria-label="Recall search form">
+      <div class="grid">
+        <label class="field">
+          <span>VIN</span>
+          <input id="vin" name="vin" type="text" placeholder="e.g. 1HGCM82633A004352" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>Make</span>
+          <input id="make" name="make" type="text" placeholder="e.g. Honda" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>Model</span>
+          <input id="model" name="model" type="text" placeholder="e.g. Accord" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>Year</span>
+          <input id="year" name="year" type="number" inputmode="numeric" min="1900" max="2100" placeholder="e.g. 2020" />
+        </label>
+        <label class="field">
+          <span>Recall Number</span>
+          <input id="recallNumber" name="recallNumber" type="text" placeholder="e.g. RCL-2024-115A" autocomplete="off" />
+        </label>
+      </div>
+
+      <div class="extras">
+        <div class="uploader">
+          <label class="field">
+            <span>Upload CSV of VINs</span>
+            <input id="csvFile" type="file" accept=".csv" />
+          </label>
+          <p class="hint">CSV format: a column named <code>VIN</code> (any case) <em>or</em> one VIN per line.</p>
+        </div>
+
+        <div class="fuzzy">
+          <label class="field">
+            <span>Fuzzy Match Threshold (<span id="thVal">0.75</span>)</span>
+            <input id="threshold" type="range" min="0.50" max="0.95" step="0.01" value="0.75" />
+          </label>
+          <p class="hint">Higher = stricter. VIN matches also allow substring hits.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="searchBtn" class="btn primary" type="submit">Search</button>
+        <button id="clearBtn" class="btn ghost" type="button">Clear</button>
+      </div>
+
+      <p id="helper" class="helper" aria-live="polite">If a CSV is selected, we’ll batch-search those VINs and enable Export/Email.</p>
+    </form>
+
+    <section id="resultsCard" class="card results" aria-live="polite" aria-busy="false">
+      <div class="results-head">
+        <h2>Results</h2>
+        <span id="resultCount" class="badge">0</span>
+      </div>
+      <div id="results" class="results-list" role="list"></div>
+
+      <div id="exportBar" class="export-bar hidden">
+        <div class="email-row">
+          <input id="emailInput" type="email" placeholder="Enter your email to send results…" />
+          <button id="emailBtn" class="btn">Email Results</button>
+        </div>
+        <div class="export-row">
+          <button id="downloadBtn" class="btn primary">Download CSV</button>
+          <span class="muted small">Contains: VIN, Recall Number, Recall Status</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container foot">
+    <small>© <span id="yearNow"></span> Safety Recall Search</small>
+    <small class="credit">
+      Background image: “Abstract blue background7” by Fir0002 — Wikimedia Commons, CC BY-SA 3.0 / GFDL.
+    </small>
+  </footer>
+
+  <script src="assets/app.js" type="module"></script>
+</body>
+</html>
